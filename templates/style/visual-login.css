@@ -1,24 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     background-image: url(/templates/img/marek-piwnicki-XBU04qr6Jbw-unsplash.jpg);
     background-size: cover;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 97vh;
-}
-
-/*-----Container Barra de Navegação-----*/
-.header-navbar {
-    padding: 10px;
-    width: 100%;
 }
 
 /*-----Container Principal-----*/
@@ -27,7 +15,6 @@ body {
     height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     backdrop-filter: blur(5px);
     border: 1px solid #323232;
@@ -68,6 +55,8 @@ body {
     font-family: 'poppins', sans-serif;
 }
 
+/*-----Lembretes-----*/
+
 .lembretes {
     width: 85%;
     display: flex;
@@ -80,4 +69,15 @@ body {
 .lembretes .recupera-senha {
     color: #9D9D9D;
     cursor: pointer;
+}
+
+.cadastro-direct {
+    padding: 10px;
+    font-family: 'poppins', sans-serif;
+    font-size: 14px;
+}
+
+.cadastro-direct a {
+    color: #323232;
+    text-decoration: none;
 }
