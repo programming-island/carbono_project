@@ -8,12 +8,17 @@
 body {
     background-image: url(/templates/img/marek-piwnicki-XBU04qr6Jbw-unsplash.jpg);
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 97vh;
 }
 
 /*-----Container Barra de Navegação-----*/
 .header-navbar {
-    display: flex
+    padding: 10px;
+    width: 100%;
 }
 
 /*-----Container Principal-----*/
