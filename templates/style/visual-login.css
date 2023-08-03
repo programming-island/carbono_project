@@ -1,18 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background-image: url(/home/templates/img/marek-piwnicki-XBU04qr6Jbw-unsplash.jpg);
+    background-image: url(/templates/img/marek-piwnicki-XBU04qr6Jbw-unsplash.jpg);
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 97vh;
 }
 
 /*-----Container Barra de Navegação-----*/
 .header-navbar {
-    display: flex;
-    
+    display: flex
 }
 
 /*-----Container Principal-----*/
@@ -21,6 +22,7 @@ body {
     height: 300px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     backdrop-filter: blur(5px);
     border: 1px solid #323232;
