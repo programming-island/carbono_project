@@ -1,0 +1,9 @@
+{% if messages %}
+{%load static%}
+{%block 'liks' %} <link rel="stylesheet" type="text/css" href="{% static 'style\_msg.css' %}">{%endblock%}
+    {% for message in messages %}
+            <div class="alert {{message.tags }}">
+                <p>{{message}}</p>
+            </div>
+    {%endfor %}
+{% endif %}

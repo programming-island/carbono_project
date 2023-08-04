@@ -7,6 +7,7 @@
 <body>
   <div class="container">
     <h4>Login</h4>
+    {% include '_msg.html' %}
     <form action="{% url 'login'%}" class="login" method="POST">
         {% csrf_token %}
       <input type="text" placeholder="Usuário" maxlength="22" id="usuario" name="usuario"/>
