@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--carbono_amb-env/scripts/activate-->
 <!--python manage.py runserver-->
 <!DOCTYPE html>
@@ -5,9 +6,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/website/templates/style/visual-login.css">
+    <link rel="stylesheet" href="/website/static/style/visual-login.css">
     <title>Login - Corretora Carbono</title>
 </head>
+=======
+{%extends 'base.html'%}
+{%block 'conteudo'%}
+{% load static %}
+{%block 'titulo'%}Login{%endblock %}
+{%block 'liks' %} <link rel="stylesheet" type="text/css" href="{% static 'style\visual-login.css' %}">{%endblock%}
+
+>>>>>>> parent of 76240fd (pequenos ajustes e validações)
 <body>
     <div class="container">
         <h4>Login</h4>
@@ -26,8 +35,17 @@
             </div>
         </div>
         <div class="cadastro-direct">
+<<<<<<< HEAD
             <span>Novo por aqui? <a href="/templates/cadastros/registrar.html">Cadastre-se</a></span>
         </div>
     </div>
 </body>
 </html>
+=======
+            <span>Novo por aqui? <a href="templates/cadastros/registrar.html">Cadastre-se</a></span>
+        </div>
+    </div>
+</body>
+</html>
+{%endblock%}
+>>>>>>> parent of 76240fd (pequenos ajustes e validações)
