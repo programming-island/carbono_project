@@ -171,7 +171,7 @@ def registrar(request):
         cpf = cpf,
         telefone = telefone,
         data_nascimento=data_nascimento,
-        id_User = user
+        iduser = user
     )
     Cadusuarios.save()
     return render(request, 'cadastros/registrar.html',{})
