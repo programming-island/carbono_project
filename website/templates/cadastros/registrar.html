@@ -1,11 +1,117 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar - Corretora Carbono</title>
-</head>
+{%extends 'base.html'%}
+{%block 'titulo'%}Cadastro{%endblock %}
+{%block 'conteudo'%}
+{% load static %}
+{%block 'liks' %} <link rel="stylesheet" type="text/css" href="{% static 'style\visual-registrar.css' %}">{%endblock%}
 <body>
+    <div>
+        <form action="{% url 'registrar' %}" method="POST">
+            {% include '_msg.html' %}
+            {% csrf_token %}
+            <div class="divnome">
+                <label class="lblnome" for="nome">Qual e o seu nome ?</label>
+                <input class="edtnome" value="{{request.POST.nome}}" maxlength="50" type="text" name="nome" id="nome" placeholder="Ex.: João">
+            </div>
+            <div class="divsobrenome">
+                <label class="lblsobrenome" for="sobrenome">Qual e o seu sobre nome ?</label>
+                <input class="edtsobrenome" value="{{request.POST.sobrenome}}" maxlength="100" name="sobrenome" id="sobrenome" placeholder="Ex.: Silva Santos" type="text">
+            </div>
+            <div class="divemail">
+                <label class="lblemail" for="email">Digite o seu e-mail</label>
+                <input class="edtemail" value="{{request.POST.email}}" maxlength="200" name="email" id="email" placeholder="Ex.: Joao@email.com.br" type="text">
+            </div>
+            <div class="divconfirmaemail">
+                <label class="lblconfirmaemail" value="{{request.POST.confirmaemail}}" for="confirmaemail">Confirme seu e-mail</label>
+                <input class="edtconfirmaemail" value="{{request.POST.confirmaemail}}" maxlength="200" name="confirmaemail" id="confirmaemail" type="text">
+            </div>
+            <div class="divcpf">
+                <label class="lblcpf" for="cpf">Digite seu cpf</label>
+                <input class="edtcpf" value="{{request.POST.cpf}}" maxlength="14" name="cpf" id="cpf"  type="text" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" placeholder="___.___.___-__" >
+                <script>
+                    //máscara de cpf
+                    var cpf = document.getElementById("cpf");
     
+                    cpf.addEventListener("input", function(){
+                        var valor = this.value;
+    
+                        // Remove todos os caracteres não numéricos
+                        valor = valor.replace(/\D/g, "");
+    
+                        //Aplica a máscara de cpf
+                        if(valor.length > 3){
+                            valor = valor.slice(0,3) + "." + valor.slice(3);
+                        }
+                        if(valor.length > 7){
+                            valor = valor.slice(0,7) + "." + valor.slice(7);
+                        }
+                        if(valor.length > 11){
+                            valor = valor.slice(0,11) + "-" + valor.slice(11);
+                        }
+                        this.value = valor;
+                    })
+                </script>
+            </div>
+            <div class="sexo">
+                <p>Qual e o seu sexo ?</p>
+                <input class="edtsexo-m" type="radio" id="sexo-m" name="sexo" value="M">
+                <label class="lblsexo-m" for="sexo-m">Masculino</label>
+    
+                <input class="edtsexo-f" type="radio" id="sexo-f" name="sexo" value="F">
+                <label class="lblsexo-f" for="sexo-f">Feminino</label>
+            </div>
+            <div class="divtelefone">
+                <label class="lbltelefone" for="telefone">Qual e o seu numero de telefone ?</label>
+                <input class="edttelefone" maxlength="15" value="{{request.POST.telefone}}" name="telefone" id="telefone" type="text" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}" placeholder="(__) _____-____">
+                <script>
+                    //máscara de telefone
+                    var telefone = document.getElementById("telefone");
+                    
+                    telefone.addEventListener("input", function() {
+                      var valor = this.value;
+                      
+                      // Remove todos os caracteres não numéricos
+                      valor = valor.replace(/\D/g, "");
+                      
+                      // Aplica a máscara de telefone
+                      if (valor.length > 0) {
+                        valor = "(" + valor;
+                      }
+                      if (valor.length > 3) {
+                        valor = valor.slice(0, 3) + ") " + valor.slice(3);
+                      }
+                      if (valor.length > 10) {
+                        valor = valor.slice(0, 10) + "-" + valor.slice(10);
+                      }
+                      
+                      this.value = valor;
+                    });
+                  </script>
+            </div>
+            <div class="divnascimento">
+                <label class="lblnascimento" for="nascimento">Digite sua data de nascimento</label>
+                <input class="edtnascimento" value="{{request.POST.nascimento}}" name="nascimento" id="nascimento" type="date">
+                <script>
+                    window.addEventListener('DOMContentLoaded', function() {
+                      var inputDate = document.getElementById('nascimento');
+                      var today = new Date().toISOString().split('T')[0];
+                      inputDate.setAttribute('max', today);
+                    });
+                </script>
+            </div>
+            <div class="divusuario">
+                <label class="lblusuario" for="usuario">Escolha um nome de usuário</label>
+                <input class="edtusuario" value="{{request.POST.usuario}}" name="usuario" id="usuario" maxlength="20" type="text">
+            </div>
+            <div class="divsenha">
+                <label class="lblsenha" for="senha">Escolha uma senha</label>
+                <input class="edtsenha" maxlength="16" type="password" name="senha" id="senha">
+            </div>
+            <div class="confirmasenha">
+                <label class="lblconfirmasenha" for="confirmasenha">Confirme sua senha</label>
+                <input class="edtconfirmasenha" maxlength="16" name="confirmasenha" id="confirmasenha" type="password">
+            </div>
+            <button class="btnenviar" type="submit">Enviar</button>
+        </form>
+    </div>
 </body>
-</html>
+{%endblock%}

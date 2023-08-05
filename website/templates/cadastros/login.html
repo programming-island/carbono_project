@@ -9,7 +9,7 @@
     {% include '_msg.html' %}
     <form action="{% url 'login'%}" class="login" method="POST">
         {% csrf_token %}
-      <input type="text" placeholder="Usuário" maxlength="22" id="usuario" name="usuario"/>
+      <input type="text" placeholder="Usuário" maxlength="20" id="usuario" name="usuario"/>
       <input type="password" placeholder="Senha"  maxlength="16" id="senha" name="senha"/>
       <button type="submit">login</button>
     </form>
