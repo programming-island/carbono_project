@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'carbono_web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'carbono'),
+        'NAME': os.environ.get('DB_NAME', 'Carbono'),
         'USER': os.environ.get('DB_USER', 'postgres'),
         'PASSWORD': os.environ.get('DB_PASS', 'postgres'),
         'HOST': 'localhost',
@@ -144,3 +144,10 @@ MESSAGE_TAGS = {
     constants.SUCCESS: 'alert-success',
     constants.INFO: 'alert-info',
 }
+
+
+# URL de redirecionamento após login
+LOGIN_REDIRET_URL ='home'
+
+# URL de redirecionamento logout 
+LOGOUT_REDIRET_URL = 'login'
