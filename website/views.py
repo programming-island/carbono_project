@@ -25,6 +25,8 @@ def registrar(request):
     senha = request.POST.get('senha')
     confirmasenha = request.POST.get('confirmasenha')
     data_nascimento = request.POST.get('nascimento')
+    cep = request.POST.get('cep')
+    sexo=request.POST.get('sexo')
     # Valida se o campo nome esta vazio 
     if not nome:
         messages.error(request,"O campo nome deve ser preenchido")
@@ -162,7 +164,7 @@ def registrar(request):
                                                       first_name = nome,
                                                       last_name = sobrenome)
     user.save()
-
+    cep = cep.replace("-","")
     Cadusuarios =usuarios(
         nome=nome,
         sobrenome=sobrenome,
@@ -170,7 +172,9 @@ def registrar(request):
         usuario = usuario,
         cpf = cpf,
         telefone = telefone,
+        sexo=sexo,
         data_nascimento=data_nascimento,
+        cep = cep,
         iduser = user
     )
     Cadusuarios.save()

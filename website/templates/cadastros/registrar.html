@@ -21,7 +21,7 @@
                 <input class="edtemail" value="{{request.POST.email}}" maxlength="200" name="email" id="email" placeholder="Ex.: Joao@email.com.br" type="text">
             </div>
             <div class="divconfirmaemail">
-                <label class="lblconfirmaemail" value="{{request.POST.confirmaemail}}" for="confirmaemail">Confirme seu e-mail</label>
+                <label class="lblconfirmaemail"  for="confirmaemail">Confirme seu e-mail</label>
                 <input class="edtconfirmaemail" value="{{request.POST.confirmaemail}}" maxlength="200" name="confirmaemail" id="confirmaemail" type="text">
             </div>
             <div class="divcpf">
@@ -46,6 +46,27 @@
                         }
                         if(valor.length > 11){
                             valor = valor.slice(0,11) + "-" + valor.slice(11);
+                        }
+                        this.value = valor;
+                    })
+                </script>
+            </div>
+            <div>
+                <label class="lblcep" for="cep">Digite seu cep</label>
+                <input class="edtcep" value="{{request.POST.cep}}" maxlength="9" name="cep" id="cep" type="text" placeholder="_____-___">
+                <script>
+                    //máscara de cep
+                    var cpf = document.getElementById("cep");
+    
+                    cpf.addEventListener("input", function(){
+                        var valor = this.value;
+    
+                        // Remove todos os caracteres não numéricos
+                        valor = valor.replace(/\D/g, "");
+    
+                        //Aplica a máscara de cpf
+                        if(valor.length > 5){
+                            valor = valor.slice(0,5) + "-" + valor.slice(5);
                         }
                         this.value = valor;
                     })
