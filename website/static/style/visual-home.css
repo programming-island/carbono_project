@@ -30,7 +30,12 @@ body {
 .cabecalho-nav-link {
     font-family: 'poppins', sans-serif;
     color: #E77A3F;
+    transition: color 0.2s;
     text-decoration: none;
+}
+
+.cabecalho-nav-link:hover {
+    color: #ff4400;
 }
 
 .cabecalho-nav-link-usuario {
@@ -38,7 +43,12 @@ body {
     flex-direction: row-reverse;
     font-family: 'poppins', sans-serif;
     color: #E77A3F;
+    transition: color 0.2s;
     text-decoration: none;
+}
+
+.cabecalho-nav-link-usuario:hover {
+    color: #ff4400;
 }
 
 /*=====Navegação - Categorias=====*/
@@ -60,8 +70,13 @@ body {
 
 .nav-link-categorias {
     color: #f1f1f1;
+    transition: color 0.2s;
     text-decoration: none;
     font-family: 'poppins', sans-serif;
+}
+
+.nav-link-categorias:hover {
+    color: #323232;
 }
 
 /*=====Navegação - Exibição=====*/
@@ -70,6 +85,3 @@ body {
     text-align: center;
 }
 
-.nav-exibicao {
-    
-}
