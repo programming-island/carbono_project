@@ -4,6 +4,7 @@
 {% load static %}
 {%block 'liks' %} <link rel="stylesheet" type="text/css" href="{% static 'style\visual-registrar.css' %}">{%endblock%}
 <body>
+    <script src="{% static 'js/registrar.js' %}"></script>
     <div>
         <form action="{% url 'registrar' %}" method="POST">
             {% include '_msg.html' %}
