@@ -82,8 +82,8 @@ body {
 /*=====Navegação - Exibição=====*/
 
 .span-exibicao {
+    font-family: 'poppins', sans-serif;    
     text-align: center;
-    
 }
 
 .nav-exibicao h3 {
