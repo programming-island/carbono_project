@@ -33,7 +33,6 @@ body {
     transition: color 0.2s;
     text-decoration: none;
 }
-
 .cabecalho-nav-link:hover {
     color: #ff4400;
 }
@@ -46,7 +45,6 @@ body {
     transition: color 0.2s;
     text-decoration: none;
 }
-
 .cabecalho-nav-link-usuario:hover {
     color: #ff4400;
 }
@@ -54,7 +52,10 @@ body {
 /*=====Navegação - Categorias=====*/
 
 .principal-navegacao {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    gap: 30px;
 }
 
 .nav-categorias {
@@ -68,20 +69,36 @@ body {
     box-shadow: 0px 0px 10px;
 }
 
-.nav-link-categorias {
+.nav-categorias-link {
     color: #f1f1f1;
     transition: color 0.2s;
     text-decoration: none;
     font-family: 'poppins', sans-serif;
 }
-
-.nav-link-categorias:hover {
+.nav-categorias-link:hover {
     color: #323232;
 }
 
 /*=====Navegação - Exibição=====*/
 
+.span-exibicao {
+    text-align: center;
+    
+}
+
 .nav-exibicao h3 {
     text-align: center;
+}
+
+.nav-exibicao {
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.nav-exibicao-itens {
+    width: 70px;
 }
 
