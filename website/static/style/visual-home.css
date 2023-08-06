@@ -10,11 +10,15 @@ body {
     background-color: #f1f1f1;
 }
 
+/*=====Container=====*/
+
+
+
 /*=====Cabeçalho=====*/
 .cabecalho {
     display: flex;
     padding: 1% 2% 1% 2%;
-    background-color: #E77A3F;
+    background-color: #323232; 
     justify-content: space-between;
 }
 
@@ -25,7 +29,7 @@ body {
 
 .cabecalho-nav-link {
     font-family: 'poppins', sans-serif;
-    color: #323232;
+    color: #E77A3F;
     text-decoration: none;
 }
 
@@ -33,9 +37,30 @@ body {
     display: flex;
     flex-direction: row-reverse;
     font-family: 'poppins', sans-serif;
-    color: #323232;
+    color: #E77A3F;
     text-decoration: none;
 }
 
 /*=====Navegação - Categorias=====*/
 
+.principal-navegacao {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-categorias {
+    display: flex;
+    text-align: center;
+    background-color: #5F5F5F;
+    text-decoration: none;
+    padding: 1%;
+    margin: 1%;
+    gap: 20px;
+}
+
+.nav-link-categorias {
+    color: #f1f1f1;
+    text-decoration: none;
+    font-family: 'poppins', sans-serif;
+}
