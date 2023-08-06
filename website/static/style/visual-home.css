@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: border-box;
+    background-color: #f1f1f1;
+}
+
+/*=====Cabeçalho=====*/
+.cabecalho {
+    display: flex;
+    padding: 1% 2% 1% 2%;
+    background-color: #E77A3F;
+    justify-content: space-between;
+}
+
+.cabecalho-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.cabecalho-nav-link {
+    font-family: 'poppins', sans-serif;
+    color: #323232;
+    text-decoration: none;
+}
+
+.cabecalho-nav-link-usuario {
+    display: flex;
+    flex-direction: row-reverse;
+    font-family: 'poppins', sans-serif;
+    color: #323232;
+    text-decoration: none;
+}
+
+/*=====Navegação - Categorias=====*/
+

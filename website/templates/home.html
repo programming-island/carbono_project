@@ -5,11 +5,25 @@
 {%block 'liks' %}<link rel="stylesheet" type="text/css" href="{% static 'style\visual-home.css' %}."/>{%endblock%}
 <body>
     <div class="container">
-        <header>
-            
+        <header class="cabecalho">
+            <nav class="cabecalho-nav">
+                <a class="cabecalho-nav-link" href="home.html">Home</a>
+                <a class="cabecalho-nav-link" href="home.html">Categorias</a>
+                <a class="cabecalho-nav-link" href="home.html">Sobre</a>
+            </nav>
+            <nav class="cabecalho-nav-usuario">
+                <a class="cabecalho-nav-link-usuario" href="home.html">Login</a>
+            </nav>
         </header>
-        <main>
-
+        <main class="principal-navegacao">
+            <nav class="nav-categorias">
+                <a class="nav-link-categorias" href="home.html">Terrenos</a>
+                <a class="nav-link-categorias" href="home.html">Casa</a>
+                <a class="nav-link-categorias" href="home.html">Chácaras</a>
+                <a class="nav-link-categorias" href="home.html">Apartamentos</a>
+                <a class="nav-link-categorias" href="home.html">Veiculos</a>
+                <a class="nav-link-categorias" href="home.html">Comercial</a>
+            </nav>
         </main>
         <footer></footer>
     </div>
