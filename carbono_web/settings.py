@@ -122,13 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-
-
- # imagens
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'website\static'),
 ]
@@ -151,7 +145,6 @@ MESSAGE_TAGS = {
 
 
 # URL de redirecionamento após login
-LOGIN_REDIRET_URL ='home'
-
+LOGIN_REDIRECT_URL = 'home'
 # URL de redirecionamento logout 
-LOGOUT_REDIRET_URL = 'login'
+LOGOUT_REDIRECT_URL = 'login'
