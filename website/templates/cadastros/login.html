@@ -5,12 +5,13 @@
 {%block 'liks' %} <link rel="stylesheet" type="text/css" href="{% static 'style\visual-login.css' %}">{%endblock%}
 
 <div class="container">
-  <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
     <h4>Login</h4>
-    <form action="{% url 'login'%}" class="login" method="POST">
+    <form action="{% url 'login'%}" class="login" method="POST" id="form-login">
         {% csrf_token %}
       <input type="text" placeholder="Usuário" maxlength="20" id="usuario" name="usuario"/>
+      <div id="msg-login" style="display: none; color: red;">Informe o login!</div>
       <input type="password" placeholder="Senha"  maxlength="16" id="senha" name="senha"/>
+      <div id="msg-senha" style="display: none; color: red;">Informe a senha</div>
       <button type="submit">login</button>
     </form>
     <div class="lembretes">
@@ -27,5 +28,6 @@
             <a href="{% url 'registrar' %}">Cadastre-se</a>
         </span>
     </div>
+    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
   </div>
 {%endblock%}
