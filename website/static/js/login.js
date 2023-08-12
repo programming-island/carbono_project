@@ -1,4 +1,4 @@
-document.getElementById("form-login").addEventListener("submit", function(evento) {
+document.getElementById("direciona-home").addEventListener("click", function(evento) {
     evento.preventDefault()
 
     var usuario = document.getElementById("usuario").value
@@ -23,6 +23,5 @@ document.getElementById("form-login").addEventListener("submit", function(evento
             msgSenha.style.display = "none"
         }, 10000)
     }
-
 })
 
