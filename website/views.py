@@ -180,24 +180,34 @@ def registrar(request):
     Cadusuarios.save()
     return render(request, 'cadastros/registrar.html',{})
 
+
 def login_view(request):
     if request.method == 'POST':
         usuario = request.POST['usuario']
         senha = request.POST['senha']
-        
-        if not usuario or not senha:
-            messages.error(request, 'Senha/usuário não foi preechido, verifique!')
-            
-        else:    
-            user = authenticate(request, username=usuario, password=senha)
-            if  user is not None:
-                login(request,user)
-                return redirect('home')
-            else:
-                messages.error(request, 'Usuário ou senha invalido, verifique!')
-                return render(request,'cadastros/login.html')
+        user = authenticate(request, username=usuario, password=senha)
 
-    return render(request, 'cadastros/login.html', {})
+
+        if not usuario:
+            senha_incorreta = False
+            usuario_vazia = True
+            return render(request, 'cadastros/login.html',{'usuario_vazia': True})
+                
+        elif not senha:
+            senha_incorreta = False
+            senha_vazia = True
+            return render(request, 'cadastros/login.html',{'senha_vazia': True})
+
+        if user is not None:
+            login(request, user)
+            senha_incorreta = False
+            return redirect('home')
+
+        else:
+            senha_incorreta = True
+            return render(request, 'cadastros/login.html', {'senha_incorreta': True})
+            
+    return render(request, 'cadastros/login.html')
         
 def logout_view(request):
     logout(request)

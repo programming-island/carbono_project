@@ -9,8 +9,4 @@ urlpatterns = [
     path('login/', views.login_view, name = 'login'),
     path('logout/', views.logout_view, name='logout'),
     path('registrar/',views.registrar, name = 'registrar'),
-]   
-
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

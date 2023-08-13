@@ -7,14 +7,24 @@
 <div class="container">
     <h4>Login</h4>
     <form action="{% url 'login'%}" class="login" method="POST" id="form-login">
-        {% csrf_token %}
+      {% csrf_token %}
       <input type="text" placeholder="Usuário" maxlength="20" id="usuario" name="usuario"/>
-      <div id="msg-login" style="display: none; color: red;">Informe o login!</div>
+
+      {%if usuario_vazia%}
+        <div id="msg-login" style="display: block; color: red;">Informe o login!</div>
+      {%endif%}
+
       <input type="password" placeholder="Senha"  maxlength="16" id="senha" name="senha"/>
-      <div id="msg-senha" style="display: none; color: red;">Informe a senha</div>
-      <a id="direciona-home" href="/website/templates/home.html">
-        <button>Login</button>
-      </a>
+
+      {%if senha_vazia%}
+        <div id="msg-senha" style="display: block; color: red;">Informe a senha</div>
+      {%endif%}
+
+      {%if senha_incorreta%}
+        <div id="senha-errada-msg" style="display: block; color: red;">Senha incorreta. Tente novamente.</div>
+      {%endif%}
+      
+      <button id="direciona-home" type="submit">Login</button>
     </form>
     <div class="lembretes">
       <div class="lembrar-senha">
@@ -27,9 +37,10 @@
     </div>
     <div class="cadastro-direct">
         <span>Novo por aqui?
-            <a href="{% url 'registrar' %}">Cadastre-se</a>
+          <a href="{% url 'registrar' %}">Cadastre-se</a>
         </span>
     </div>
-    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+      <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
   </div>
+</div>
 {%endblock%}
