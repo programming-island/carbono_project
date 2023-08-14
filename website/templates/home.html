@@ -13,7 +13,11 @@
                 <a class="cabecalho-nav-link" href="home.html">Sobre</a>
             </nav>
             <nav class="cabecalho-nav-usuario">
+                {% if user.is_authenticated %}
+                <a class="cabecalho-nav-link-usuario" href="{% url 'login'%}">{{request.user}}</a>
+                {% else  %}
                 <a class="cabecalho-nav-link-usuario" href="{% url 'login'%}">Login</a>
+                {%endif%}
             </nav>
         </header>
         <main class="principal-navegacao">
