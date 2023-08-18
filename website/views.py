@@ -5,10 +5,13 @@ import re
 from django.contrib.auth import authenticate, login ,logout
 from django.contrib.auth.models import User
 from .models import usuarios
+from .models import Imovel
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html',{})
+    imoveis = Imovel.objects.all()
+    context = {'imoveis': imoveis}
+    return render(request, 'home.html',context)
 
 
 def registrar(request):

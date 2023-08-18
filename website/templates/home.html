@@ -31,9 +31,18 @@
             </nav>
             <span class="span-exibicao"><h3>Publicações recentes</h3></span>
             <section class="nav-exibicao">
-                <article class="nav-exibicao-itens">
-                    <h4>Casa - Descrição casa teste</h4>
-                </article>
+                {% for imovel in imoveis %}
+                    <article class="nav-exibicao-itens">
+                        <div class="card">
+                            <img style="width: 255%;" class="card-img-top" src="{{ imovel.foto.url }}" alt="imagem de {{imovel.titulo}}">
+                            <div class="card-body">
+                                <h4 class="card-title">{{imovel.titulo}}</h4>
+                                <h6 style="margin-bottom: 10px;" class="card-subtitle">R$ {{ imovel.preco }}</h6>
+                                <a class="btn btn-dark" href="">Detalhes</a>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
             </section>
         </main>
         <footer></footer>
