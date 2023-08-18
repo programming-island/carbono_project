@@ -30,7 +30,7 @@ def registrar(request):
     # Valida se o campo nome esta vazio 
     if not nome:
         messages.error(request,"O campo nome deve ser preenchido")
-        return render(request, 'registrar.html')
+        return render(request, 'cadastros/registrar.html')
     
     # Valida se o campo nome tem caracteres especiais ou numeros
     padrao = r'^[a-zA-Z\sÀ-ÖØ-öø-ÿ]*$'
@@ -178,7 +178,7 @@ def registrar(request):
         iduser = user
     )
     Cadusuarios.save()
-    return render(request, 'cadastros/registrar.html',{})
+    return render(request, 'cadastros/registrar.html')
 
 
 def login_view(request):
