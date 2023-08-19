@@ -4,8 +4,8 @@ from django.core.validators import validate_email
 import re
 from django.contrib.auth import authenticate, login ,logout
 from django.contrib.auth.models import User
-from .models import usuarios
-from .models import Imovel
+from .models import usuarios,Imovel
+
 
 # Create your views here.
 def home(request):
@@ -13,6 +13,10 @@ def home(request):
     context = {'imoveis': imoveis}
     return render(request, 'home.html',context)
 
+def imovel_detalhes(request,imovel_id):
+    imovel = Imovel.objects.get(pk=imovel_id)
+    return render(request, 'imoveis/detalhe_imovel.html',{'imovel':imovel})
+    pass
 
 def registrar(request):
     if request.method != 'POST':

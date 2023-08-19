@@ -42,7 +42,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">{{imovel.titulo}}</h4>
                                 <h6 style="margin-bottom: 10px;" class="card-subtitle">R$ {{ imovel.preco }}</h6>
-                                <a class="btn btn-dark" href="">Detalhes</a>
+                                <a class="btn btn-dark" href="{% url 'imovel_detail' imovel_id = imovel.id %}">Detalhes</a>
                             </div>
                         </div>
                     </article>

@@ -41,6 +41,7 @@ class Imovel(models.Model):
     qtd_comodos = models.IntegerField(verbose_name="Qtd Comodos Totais")
     data_geracao = models.DateTimeField(default=timezone.now, editable=False)
     destaque = models.BooleanField(default=False)
+    visualizacoes = models.PositiveIntegerField(default=0,editable=False)
     
     
 
