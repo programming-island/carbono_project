@@ -37,7 +37,7 @@
                             {%if imovel.fotosdosimoveis_set.first.foto.url %}
                                 <img style="width: 255%;" class="card-img-top" src="{{ imovel.fotosdosimoveis_set.first.foto.url }}" alt="imagem de {{imovel.titulo}}">
                             {% else %}
-                                <img style="width: 255%;" class="card-img-top" src="{% static 'media/default.png' %}" alt="imagem de {{imovel.titulo}}">
+                                <img style="width: 255%;" class="card-img-top" src="{% static 'media/imoveis/default.png' %}" alt="imagem de {{imovel.titulo}}">
                             {% endif %}
                             <div class="card-body">
                                 <h4 class="card-title">{{imovel.titulo}}</h4>

@@ -25,6 +25,10 @@ class TipoImovel(models.Model):
     def __str__(self):
         return self.nome
 
+    class Meta:
+        verbose_name = 'Tipo de Imóvel'
+        verbose_name_plural = 'Tipos de Imóveis'
+
 class Imovel(models.Model):
     titulo = models.CharField(verbose_name="Título do Imóvel",max_length=200)
     tipo_imovel = models.ForeignKey(TipoImovel,verbose_name="Tipo do Imóvel", on_delete=models.CASCADE)
@@ -35,6 +39,9 @@ class Imovel(models.Model):
     qtd_quartos = models.IntegerField(verbose_name="Qtd Quartos")
     qtd_banheiros = models.IntegerField(verbose_name="Qtd Banheiros")
     qtd_comodos = models.IntegerField(verbose_name="Qtd Comodos Totais")
+    data_geracao = models.DateTimeField(default=timezone.now, editable=False)
+    destaque = models.BooleanField(default=False)
+    
     
 
     def __str__(self):
