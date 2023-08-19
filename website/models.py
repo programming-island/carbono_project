@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+import os
 
 # Create your models here.
 
@@ -34,7 +35,7 @@ class Imovel(models.Model):
     qtd_quartos = models.IntegerField(verbose_name="Qtd Quartos")
     qtd_banheiros = models.IntegerField(verbose_name="Qtd Banheiros")
     qtd_comodos = models.IntegerField(verbose_name="Qtd Comodos Totais")
-    foto = models.ImageField(verbose_name="Foto do Imóvel", upload_to="imoveis/", default="imoveis/default.png")
+    
 
     def __str__(self):
         return self.titulo
@@ -42,3 +43,18 @@ class Imovel(models.Model):
     class Meta:
         verbose_name = 'Imóvel'
         verbose_name_plural = 'Imóveis'
+
+def upload_to(instance,filename): 
+    base_filename, extension = os.path.splitext(filename)
+    return (f"imoveis/{instance.imovel.titulo.replace(' ', '_')}-{instance.id}{extension}")
+
+class FotosDosImoveis(models.Model):
+    imovel = models.ForeignKey(Imovel, on_delete=models.CASCADE)
+    foto =  models.ImageField(upload_to=upload_to)
+
+    def __str__(self):
+        return f"Foto do imóvel: {self.imovel.titulo}"
+
+    class Meta:
+        verbose_name = 'Foto do Imóvel'
+        verbose_name_plural = 'Fotos dos Imóveis'
