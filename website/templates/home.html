@@ -27,12 +27,9 @@
     </header>
     <main class="principal-navegacao">
       <nav class="nav-categorias">
-        <a class="nav-categorias-link" href="home.html">Casa</a>
-        <a class="nav-categorias-link" href="home.html">Terrenos</a>
-        <a class="nav-categorias-link" href="home.html">Chácaras</a>
-        <a class="nav-categorias-link" href="home.html">Apartamentos</a>
-        <a class="nav-categorias-link" href="home.html">Veiculos</a>
-        <a class="nav-categorias-link" href="home.html">Comercial</a>
+        {% for tipoimovel in tipoimoveis%}
+            <a class="nav-categorias-link" href="">{{tipoimovel.nome}}</a>
+        {% endfor %}
       </nav>
       <span class="span-exibicao"><h3>Publicações recentes</h3></span>
       <section class="nav-exibicao">
