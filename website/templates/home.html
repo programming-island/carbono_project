@@ -59,8 +59,8 @@
               <a
                 class="btn btn-dark"
                 href="{% url 'imovel_detail' imovel_id=imovel.id %}"
-                >Detalhes</a
-              >
+                >Detalhes</a>
+                <span>Publicado em {{imovel.data_geracao}}</span>
             </div>
           </div>
         </article>

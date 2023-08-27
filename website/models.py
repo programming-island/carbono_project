@@ -54,7 +54,7 @@ class Imovel(models.Model):
 
 def upload_to(instance,filename): 
     base_filename, extension = os.path.splitext(filename)
-    return (f"imoveis/{instance.imovel.titulo.replace(' ', '_')}-{instance.id}{extension}")
+    return (f"imoveis/{instance.imovel.titulo.replace(' ', '_')}-{instance.imovel.id}{extension}")
 
 class FotosDosImoveis(models.Model):
     imovel = models.ForeignKey(Imovel, on_delete=models.CASCADE)

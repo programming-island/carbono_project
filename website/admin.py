@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Imovel,TipoImovel,FotosDosImoveis
-from django.contrib.admin import AdminSite
+
 
 
 
