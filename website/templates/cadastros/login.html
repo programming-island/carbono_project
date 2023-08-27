@@ -21,7 +21,7 @@
       {%endif%}
 
       {%if senha_incorreta%}
-        <div id="senha-errada-msg" style="display: block; color: red;">Senha incorreta. Tente novamente.</div>
+        <div id="senha-errada-msg" style="display: block; color: red;">Senha ou Usuário incorreto. Tente novamente.</div>
       {%endif%}
       
       <button id="direciona-home" type="submit">Login</button>
@@ -37,7 +37,7 @@
     </div>
     <div class="cadastro-direct">
         <span>Novo por aqui?
-          <a href="{% url 'registrar' %}">Cadastre-se</a>
+          <a href="">Cadastre-se</a>
         </span>
     </div>
       <script type="text/javascript" src="{% static 'js/login.js' %}"></script>

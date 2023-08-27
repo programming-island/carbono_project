@@ -9,7 +9,6 @@ urlpatterns = [
     path('', views.home, name = 'home'),
     path('login/', views.login_view, name = 'login'),
     path('logout/', views.logout_view, name='logout'),
-    path('registrar/',views.registrar, name = 'registrar'),
     path('imovel/<int:imovel_id>/', views.imovel_detalhes, name = 'imovel_detail'),
 ]
 
