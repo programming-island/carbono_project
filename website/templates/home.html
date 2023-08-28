@@ -21,7 +21,7 @@
           <a class="cabecalho-nav-link-usuario" href="{% url 'logout'%}">Sair</a>
         {% else %}
           <a class="cabecalho-nav-link-usuario" href="{% url 'login'%}">Login</a>
-        {%endif%}
+        {% endif %}
       </nav>
     </header>
     <main class="principal-navegacao">
@@ -31,11 +31,11 @@
         {% endfor %}
       </nav>
       <span class="span-exibicao"><h3>Publicações de Destaque</h3></span>
-      <section class="nav-exibicao">
+      <section class="nav-exibicao"> 
         {% for imovel in imoveis %}
         <article class="nav-exibicao-itens">
           <div class="card">
-            {%if imovel.fotosdosimoveis_set.first.foto.url %}
+            {% if imovel.fotosdosimoveis_set.first.foto.url %}
             <img
               style="width: 255%"
               class="card-img-top"

@@ -5,7 +5,7 @@ from .models import Imovel,TipoImovel
 
 # Create your views here.
 def home(request):
-    imoveis = Imovel.objects.all()
+    imoveis = Imovel.objects.filter(destaque=True)
     tipoimoveis = TipoImovel.objects.all()
     context = {'imoveis': imoveis, 'tipoimoveis':tipoimoveis}
     return render(request, 'home.html',context)
