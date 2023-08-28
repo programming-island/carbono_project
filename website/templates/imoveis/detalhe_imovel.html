@@ -1,5 +1,35 @@
 {% extends 'base.html' %}
-{% block 'titulo' %}Detalhes do Imóvel{% endblock %}
+{% block 'titulo' %}Detalhes do Imóvel: {{imovel.titulo}}{% endblock %}
 {% block 'conteudo' %}
+{% load static %} 
+<div class="container">
+    <header class="cabecalho">
+    
+    </header>
+    <main class="principal-detalhes">
+        <article class="detalhes-imovel">
+            <h2>{{ imovel.titulo }}</h2>
+            <p><strong>Preço:</strong> R$ {{ imovel.preco }}</p>
+            <p><strong>Descrição:</strong> {{ imovel.descricao }}</p>
+            <p><strong>Endereço:</strong> {{ imovel.endereco }}</p>
+            <p><strong>Cidade:</strong> {{ imovel.cidade }}</p>
+            <p><strong>Quartos:</strong> {{ imovel.qtd_quartos }}</p>
+            <p><strong>Banheiros:</strong> {{ imovel.qtd_banheiros }}</p>
+            <p><strong>Comodos Totais:</strong> {{ imovel.qtd_comodos }}</p>
+            <div class="fotos-imovel">
+                {% for foto in imovel.fotosdosimoveis_set.all %}
+                    {% if foto.id %}
+                        <img src="{{ foto.foto.url }}" alt="Foto do imóvel {{ imovel.titulo }}">
+                    {% else %}
+                        <img src="{% static 'media/imoveis/default.png' %}" alt="imagem de {{imovel.titulo}}"/>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </article>
+    </main>
+    <footer>
 
+    </footer>
+</div>
+</body>
 {% endblock %}
