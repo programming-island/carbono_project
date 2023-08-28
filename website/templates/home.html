@@ -2,10 +2,7 @@
 {%block 'titulo'%}HomePage{%endblock %} 
 {%block 'conteudo'%} 
 {% load static %} 
-{%block 'liks' %}<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'style\visual-home.css' %}."/>{%endblock%}
+{%block 'liks' %}<link rel="stylesheet" type="text/css" href="{% static 'style\visual-home.css' %}"/>{%endblock%}
 <body>
   <script src="{% static 'js/home.js' %}"></script>
   <div class="container">
@@ -31,40 +28,44 @@
             <a class="nav-categorias-link" href="">{{tipoimovel.nome}}</a>
         {% endfor %}
       </nav>
-      <span class="span-exibicao"><h3>Publicações recentes</h3></span>
-      <section class="nav-exibicao">
-        {% for imovel in imoveis %}
-        <article class="nav-exibicao-itens">
-          <div class="card">
-            {%if imovel.fotosdosimoveis_set.first.foto.url %}
-            <img
-              style="width: 255%"
-              class="card-img-top"
-              src="{{ imovel.fotosdosimoveis_set.first.foto.url }}"
-              alt="imagem de {{imovel.titulo}}"
-            />
-            {% else %}
-            <img
-              style="width: 255%"
-              class="card-img-top"
-              src="{% static 'media/imoveis/default.png' %}"
-              alt="imagem de {{imovel.titulo}}"
-            />
-            {% endif %}
-            <div class="card-body">
-              <h4 class="card-title">{{imovel.titulo}}</h4>
-              <h6 style="margin-bottom: 10px" class="card-subtitle">
-                R$ {{ imovel.preco }}
-              </h6>
-              <a
-                class="btn btn-dark"
-                href="{% url 'imovel_detail' imovel_id=imovel.id %}"
-                >Detalhes</a>
-                <span>Publicado em {{imovel.data_geracao}}</span>
+      <span class="span-exibicao"><h3>Publicações de Destaque</h3></span>
+      <section class="nav-exibicao" >
+        {% if imoveis_destque %}
+          {% for imovel in imoveis_destque %}
+          <article class="nav-exibicao-itens">
+            <div class="card">
+              {% if imovel.fotosdosimoveis_set.first.foto.url %}
+              <img
+                style="width: 255%"
+                class="card-img-top"
+                src="{{ imovel.fotosdosimoveis_set.first.foto.url }}"
+                alt="imagem de {{imovel.titulo}}"
+              />
+              {% else %}
+              <img
+                style="width: 255%"
+                class="card-img-top"
+                src="{% static 'media/imoveis/default.png' %}"
+                alt="imagem de {{imovel.titulo}}"
+              />
+              {% endif %}
+              <div class="card-body">
+                <h4 class="card-title">{{imovel.titulo}}</h4>
+                <h6 style="margin-bottom: 10px" class="card-subtitle">
+                  R$ {{ imovel.preco }}
+                </h6>
+                <a
+                  class="btn btn-dark"
+                  href="{% url 'imovel_detail' imovel_id=imovel.id %}"
+                  >Detalhes</a>
+                  <span>Publicado em {{imovel.data_geracao}}</span>
+              </div>
             </div>
-          </div>
-        </article>
-        {% endfor %}
+          </article>
+          {% endfor %}
+        {% else %}
+          <p>Nenhum imóvel de destaque encontrado.</p>
+        {% endif%}
       </section>
     </main>
     <footer></footer>
