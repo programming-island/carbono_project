@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,  get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login ,logout
 from .models import Imovel,TipoImovel
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -13,10 +15,29 @@ def home(request):
 def imovel_pesquisa(request):
     return render(request, 'imoveis/pesquisa_imoveis.html')
 
-def imovel_detalhes(request,imovel_id):
-    imovel = Imovel.objects.get(pk=imovel_id)
-    return render(request, 'imoveis/detalhe_imovel.html',{'imovel':imovel})
+@login_required
+def graficos(request):
+    imoveis = Imovel.objects.all() 
+    context = {'imoveis': imoveis}
+    return render(request, 'graficos.html', context)
+
+def imovel_detalhes(request, imovel_id):
+    imovel = get_object_or_404(Imovel, pk=imovel_id)
+    imovel.visualizacoes += 1
+    imovel.save()
+
+    context = {'imovel': imovel}
+    return render(request, 'imoveis/detalhe_imovel.html', context)
     pass
+
+
+def get_views_data(request):
+    imoveis = Imovel.objects.all()
+    data = {
+        'labels': [imovel.titulo for imovel in imoveis],
+        'data': [imovel.visualizacoes for imovel in imoveis],
+    }
+    return JsonResponse(data)
 
 def login_view(request):
     if request.method == 'POST':

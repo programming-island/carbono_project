@@ -1,0 +1,11 @@
+.chart-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  #views-chart {
+    width: 100%;
+    height: 300px;
+  }
+  

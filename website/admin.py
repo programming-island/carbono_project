@@ -16,7 +16,7 @@ class FotosDosImoveisInline(admin.TabularInline):
 
 class ImovelAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'preco', 'cidade')
-    list_filter = ('cidade',)
+    list_filter = ('cidade','preco')
     search_fields = ('titulo', 'descricao')
     inlines = [FotosDosImoveisInline]
 

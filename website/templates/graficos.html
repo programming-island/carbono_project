@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block 'titulo' %}Graficos{% endblock %}
+{% load static %} 
+{%block 'liks' %}<link rel="stylesheet" type="text/css" href="{% static 'style\visual-graficos.css' %}."/>{%endblock%}
+
+{% block 'conteudo' %}
+    <h1>Gráfico de Visualizações</h1>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Seu conteúdo HTML aqui -->
+
+  <div class="chart-container">
+    <canvas id="views-chart"></canvas>
+  </div>
+  <script type="text/javascript" src="{% static 'js/graficos.js' %}"></script>
+{% endblock %}

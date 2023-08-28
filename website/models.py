@@ -14,6 +14,7 @@ class TipoImovel(models.Model):
     class Meta:
         verbose_name = 'Tipo de Imóvel'
         verbose_name_plural = 'Tipos de Imóveis'
+        ordering = ['nome']
 
 class Imovel(models.Model):
     titulo = models.CharField(verbose_name="Título do Imóvel",max_length=200)
@@ -37,6 +38,7 @@ class Imovel(models.Model):
     class Meta:
         verbose_name = 'Imóvel'
         verbose_name_plural = 'Imóveis'
+        ordering = ['titulo']
 
 def upload_to(instance,filename): 
     base_filename, extension = os.path.splitext(filename)
