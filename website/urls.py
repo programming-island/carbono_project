@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/', views.login_view, name = 'login'),
     path('logout/', views.logout_view, name='logout'),
     path('imovel/<int:imovel_id>/', views.imovel_detalhes, name = 'imovel_detail'),
+    path('imovel/pesquisa/', views.imovel_pesquisa, name = 'imovel_pesquisa'),
 ]
 
 if settings.DEBUG:

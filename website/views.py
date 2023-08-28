@@ -10,6 +10,9 @@ def home(request):
     context = {'imoveis': imoveis, 'tipoimoveis':tipoimoveis}
     return render(request, 'home.html',context)
 
+def imovel_pesquisa(request):
+    return render(request, 'imoveis/pesquisa_imoveis.html')
+
 def imovel_detalhes(request,imovel_id):
     imovel = Imovel.objects.get(pk=imovel_id)
     return render(request, 'imoveis/detalhe_imovel.html',{'imovel':imovel})
