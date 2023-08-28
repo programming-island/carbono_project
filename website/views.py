@@ -45,8 +45,8 @@ def login_view(request):
             return render(request, 'cadastros/login.html', {'senha_incorreta': True})
             
     return render(request, 'cadastros/login.html')
-        
-def logout_view(request):
+
+def LogoutView(request):
     logout(request)
     return redirect('/admin/')
         

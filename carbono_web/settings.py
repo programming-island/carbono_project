@@ -151,4 +151,4 @@ MESSAGE_TAGS = {
 # URL de redirecionamento após login
 LOGIN_REDIRECT_URL = '/admin/'
 # URL de redirecionamento logout 
-LOGOUT_REDIRECT_URL = 'login'
+LOGOUT_REDIRECT_URL = 'home'
