@@ -61,3 +61,27 @@ class FotosDosImoveis(models.Model):
         verbose_name = 'Foto do Imóvel'
         verbose_name_plural = 'Fotos dos Imóveis'
         
+ 
+class RedesSociaisManager(models.Manager):
+    def get_singleton(self):
+        obj, created = self.get_or_create(pk=1)
+        return obj       
+        
+class RedesSociais(models.Model):
+    facebook = models.CharField(verbose_name='Facebook',max_length=300)
+    instagram = models.CharField(verbose_name='Instagram',max_length=300)
+    whatsapp = models.CharField(verbose_name='WhatsApp',max_length=300)
+    
+    
+    def save(self, *args, **kwargs):
+        if not self.pk and RedesSociais.objects.exists():
+            return  # Apenas uma instância permitida
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Rede Social'
+        verbose_name_plural = 'Redes Socias'
+        
+    
+    def __str__(self):
+        return "Configurações de Redes Sociais"
