@@ -1,9 +1,6 @@
 from django.contrib import admin
 from .models import Imovel,TipoImovel,FotosDosImoveis
 
-
-
-
 # Register your models here.
 
 admin.site.site_header = "Administração Carbono"

@@ -56,10 +56,7 @@
               <h6 style="margin-bottom: 10px" class="card-subtitle">
                 R$ {{ imovel.preco }}
               </h6>
-              <a
-                class="btn btn-dark"
-                href="{% url 'imovel_detail' imovel_id=imovel.id %}"
-                >Detalhes</a>
+              <a class="btn btn-dark" href="{% url 'imovel_detail' imovel_id=imovel.id imovel_nome=imovel.titulo|slugify %}">Detalhes</a>
                 <span>Publicado em {{imovel.data_geracao}}</span>
             </div>
           </div>

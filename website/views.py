@@ -21,7 +21,7 @@ def graficos(request):
     context = {'imoveis': imoveis}
     return render(request, 'graficos.html', context)
 
-def imovel_detalhes(request, imovel_id):
+def imovel_detalhes(request, imovel_id, imovel_nome):
     imovel = get_object_or_404(Imovel, pk=imovel_id)
     imovel.visualizacoes += 1
     imovel.save()
@@ -29,7 +29,6 @@ def imovel_detalhes(request, imovel_id):
     context = {'imovel': imovel}
     return render(request, 'imoveis/detalhe_imovel.html', context)
     pass
-
 
 def get_views_data(request):
     imoveis = Imovel.objects.all()

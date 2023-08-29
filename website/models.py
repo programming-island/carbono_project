@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
+import re
 import os
 
 # Create your models here.
@@ -29,8 +29,6 @@ class Imovel(models.Model):
     data_geracao = models.DateTimeField(default=timezone.now, editable=False)
     destaque = models.BooleanField(default=False)
     visualizacoes = models.PositiveIntegerField(default=0,editable=False)
-    
-    
 
     def __str__(self):
         return self.titulo
@@ -42,8 +40,16 @@ class Imovel(models.Model):
 
 def upload_to(instance,filename): 
     base_filename, extension = os.path.splitext(filename)
-    return (f"imoveis/{instance.imovel.titulo.replace(' ', '_')}-{instance.imovel.id}{extension}")
-
+    title = instance.imovel.titulo
+    # Remove caracteres especiais e espaços
+    clean_title = re.sub(r'[^\w\s-]', '', title).strip()
+    # Substitui espaços por underscores
+    clean_title = re.sub(r'\s+', '_', clean_title)
+    # Limita o tamanho do título para evitar nomes de arquivo muito longos
+    max_length = 30  
+    final_title = clean_title[:max_length]
+    return f"imoveis/{final_title}-{instance.imovel.id}{extension}"
+    
 class FotosDosImoveis(models.Model):
     imovel = models.ForeignKey(Imovel, on_delete=models.CASCADE)
     foto =  models.ImageField(upload_to=upload_to)
@@ -54,3 +60,4 @@ class FotosDosImoveis(models.Model):
     class Meta:
         verbose_name = 'Foto do Imóvel'
         verbose_name_plural = 'Fotos dos Imóveis'
+        
