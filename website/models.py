@@ -68,9 +68,9 @@ class RedesSociaisManager(models.Manager):
         return obj       
         
 class RedesSociais(models.Model):
-    facebook = models.CharField(verbose_name='Facebook',max_length=300)
-    instagram = models.CharField(verbose_name='Instagram',max_length=300)
-    whatsapp = models.CharField(verbose_name='WhatsApp',max_length=300)
+    facebook = models.CharField(verbose_name='Facebook',max_length=300,help_text='Insira o link para a página do Facebook.')
+    instagram = models.CharField(verbose_name='Instagram',max_length=300,help_text='Insira o link para a página do Instagram.')
+    whatsapp = models.CharField(verbose_name='WhatsApp',max_length=300,help_text='Insira o link para a contado do Whatsapp.')
     
     
     def save(self, *args, **kwargs):

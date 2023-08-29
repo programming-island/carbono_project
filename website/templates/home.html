@@ -57,9 +57,11 @@
     <footer>
       <div class="footer-redes">
         <h3>Redes Sociais</h3>
-        <a href="">Instagram</a>
-        <a href="">Facebook</a>
-        <a href="">Whatsapp</a>
+        {% for redessocial in redessociais%}
+          <a href="{{redessocial.instagram}}" target="_blank">Instagram</a>
+          <a href="{{redessocial.facebook}}" target="_blank">Facebook</a>
+          <a href="{{redessocial.whatsapp}}" target="_blank">Whatsapp</a>
+        {% endfor %}
       </div>
     <div class="footer-redes">
         <h3>Menu</h3>

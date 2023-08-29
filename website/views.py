@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect,  get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login ,logout
-from .models import Imovel,TipoImovel
+from .models import Imovel,TipoImovel,RedesSociais
 from django.http import JsonResponse
 
 
@@ -9,7 +9,8 @@ from django.http import JsonResponse
 def home(request):
     imoveis = Imovel.objects.filter(destaque=True)
     tipoimoveis = TipoImovel.objects.all()
-    context = {'imoveis': imoveis, 'tipoimoveis':tipoimoveis}
+    redessociais = RedesSociais.objects.all()
+    context = {'imoveis': imoveis, 'tipoimoveis':tipoimoveis,'redessociais':redessociais}
     return render(request, 'home.html',context)
 
 def imovel_pesquisa(request):
