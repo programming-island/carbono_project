@@ -10,9 +10,12 @@
   <script src="{% static 'js/home.js' %}"></script>
   <header>
     <div>
-        <img src="{% static 'img/carbono-icon.png'%}" alt="img logo Carbono" width="50">
-        <form action="">
-            <input class="busca-texto" type="text" placeholder="Pesquisar...">
+        <a href="{% url 'home'%}"  style="display: inline-block; margin: 0; padding: 0;">
+          <img class="img-logo" src="{% static 'img/carbono-icon.png'%}" alt="img logo Carbono" width="50">
+        </a>
+        <form method="GET" action="">
+            <input class="busca-texto" type="text" name="search" placeholder="Pesquisar...">
+            <button type="submit">Buscar</button>
         </form>
     </div>
     {% if user.is_authenticated %}
@@ -29,30 +32,42 @@
         <section class="categoria-section">
             <ul>
               {% for tipoimovel in tipoimoveis%}
-                <li><a class="nav-categorias-link" href="">{{tipoimovel.nome}}</a></li>
+                <li><a class="nav-categorias-link" href="?tipo={{tipoimovel.id}}">{{tipoimovel.nome}}</a></li>
               {% endfor %}
             </ul>
         </section>
     </div>
-    <h2 class="destaques-titulo">Destaques</h2>
+    {% if filtro_tituloimovel or filtro_tipoimovel %}
+      {% if tipo_imovel_nome%}
+        <h2 class=" destaques-titulo">Filtrando pelo tipo imóvel: {{ tipo_imovel_nome }}</h2>
+      {% elif tipo_imovel_psq %}
+        <h2 class=" destaques-titulo">Filtrando pelo titulo: {{tipo_imovel_psq}}</h2>  
+      {% endif%}
+    {% else%}
+      <h2 class=" destaques-titulo">Destaques</h2>
+    {% endif %}
     <section class="container-destaques">
-      {% for imovel in imoveis %}
-        <div class="destaques-item">
-            <a class="item-link" href="">
-                {% if imovel.fotosdosimoveis_set.first.foto.url %}
-                  <img src="{{ imovel.fotosdosimoveis_set.first.foto.url }}" alt="imagem de {{imovel.titulo}}"/>
-                {% else %}
-                  <img  src="{% static 'media/imoveis/default.png' %}" alt="imagem de {{imovel.titulo}}"/>
-                {% endif %}
-                <h2><a class="btn btn-dark" href="{% url 'imovel_detail' imovel_id=imovel.id imovel_nome=imovel.titulo|slugify %}">{{imovel.titulo}}</a></h2>
-                <p class="item-valor">R$ {{ imovel.preco }}</p>
-                <p class="item-data">Publicado em {{imovel.data_geracao}}</p>
-                <div>
-                  <span class="span-categoria">{{imovel.tipo_imovel.nome}}</span>
-                </div>
-            </a>
-        </div>
+      {% if imoveis%}
+        {% for imovel in imoveis %}
+          <div class="destaques-item">
+              <a class="item-link" href="">
+                  {% if imovel.fotosdosimoveis_set.first.foto.url %}
+                    <img src="{{ imovel.fotosdosimoveis_set.first.foto.url }}" alt="imagem de {{imovel.titulo}}"/>
+                  {% else %}
+                    <img  src="{% static 'media/imoveis/default.png' %}" alt="imagem de {{imovel.titulo}}"/>
+                  {% endif %}
+                  <h2><a class="btn btn-dark" href="{% url 'imovel_detail' imovel_id=imovel.id imovel_nome=imovel.titulo|slugify %}">{{imovel.titulo}}</a></h2>
+                  <p class="item-valor">R$ {{ imovel.preco }}</p>
+                  <p class="item-data">Publicado em {{imovel.data_geracao}}</p>
+                  <div>
+                    <span class="span-categoria">{{imovel.tipo_imovel.nome}}</span>
+                  </div>
+              </a>
+          </div>
         {% endfor %}
+      {% else%}
+        <p style="color: red">Nenhum imóvel encontrado para essa seleção.</p>
+      {% endif%}
       </section>
     <footer>
       <div class="footer-redes">

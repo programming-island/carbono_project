@@ -8,9 +8,42 @@ from django.http import JsonResponse
 # Create your views here.
 def home(request):
     imoveis = Imovel.objects.filter(destaque=True)
-    tipoimoveis = TipoImovel.objects.all()
     redessociais = RedesSociais.objects.all()
-    context = {'imoveis': imoveis, 'tipoimoveis':tipoimoveis,'redessociais':redessociais}
+    tipoimoveis = TipoImovel.objects.all()
+    
+    search_query = request.GET.get('search')
+    tipo_id = request.GET.get('tipo')
+    
+    filtro_tipoimovel = False
+    filtro_tituloimovel = False
+    tipo_imovel_psq = search_query
+    
+    if tipo_id:
+        tipo_imovel = TipoImovel.objects.get(pk=tipo_id)
+        tipo_imovel_nome = tipo_imovel.nome
+        imoveis = imoveis.filter(tipo_imovel=tipo_imovel)
+        filtro_tipoimovel = True
+        tipo_imovel_psq = search_query
+        
+    else:
+        tipo_imovel_nome = None
+    
+    if search_query:
+        imoveis = Imovel.objects.filter(titulo__icontains = search_query)
+        tipo_imovel_psq = search_query
+        filtro_tituloimovel = True
+        
+    context = {'imoveis': imoveis, 
+               'tipoimoveis':tipoimoveis,
+               'redessociais':redessociais,
+               'tipo_imovel_nome':tipo_imovel_nome,
+               'tipo_imovel_psq':tipo_imovel_psq,
+               'filtro_tipoimovel':filtro_tipoimovel,
+               'filtro_tituloimovel':filtro_tituloimovel}
+    
+    if not imoveis:
+        context['empty_message'] = "Nenhum imóvel encontrado para essa seleção."
+        
     return render(request, 'home.html',context)
 
 def imovel_pesquisa(request):
