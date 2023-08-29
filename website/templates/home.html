@@ -5,66 +5,69 @@
 {%block 'liks' %}<link
   rel="stylesheet"
   type="text/css"
-  href="{% static 'style\visual-home.css' %}."/>{%endblock%}
+  href="{% static 'style\visual-home.css' %}"/>{%endblock%}
 <body>
   <script src="{% static 'js/home.js' %}"></script>
-  <div class="container">
-    <header class="cabecalho">
-      <nav class="cabecalho-nav">
-        <a class="cabecalho-nav-link" href="{% url 'home'%}">Home</a>
-        <a class="cabecalho-nav-link" href="{% url 'imovel_pesquisa'%}">Categorias</a>
-        <a class="cabecalho-nav-link" href="home.html">Sobre</a>
-      </nav>
-      <nav class="cabecalho-nav-usuario">
-        {% if user.is_authenticated %}
-          <a class="cabecalho-nav-link-usuario" href="{% url 'admin:index'%}">{{request.user}}</a>
-          <a class="cabecalho-nav-link-usuario" href="{% url 'logout'%}">Sair</a>
-          <a class="cabecalho-nav-link-usuario" href="{% url 'graficos'%}">Ver Graficos</a>
-        {% else %}
-          <a class="cabecalho-nav-link-usuario" href="{% url 'login'%}">Login</a>
-        {% endif %}
-      </nav>
-    </header>
-    <main class="principal-navegacao">
-      <nav class="nav-categorias">
-        {% for tipoimovel in tipoimoveis%}
-            <a class="nav-categorias-link" href="">{{tipoimovel.nome}}</a>
-        {% endfor %}
-      </nav>
-      <span class="span-exibicao"><h3>Publicações de Destaque</h3></span>
-      <section class="nav-exibicao"> 
-        {% for imovel in imoveis %}
-        <article class="nav-exibicao-itens">
-          <div class="card">
-            {% if imovel.fotosdosimoveis_set.first.foto.url %}
-            <img
-              style="width: 255%"
-              class="card-img-top"
-              src="{{ imovel.fotosdosimoveis_set.first.foto.url }}"
-              alt="imagem de {{imovel.titulo}}"
-            />
-            {% else %}
-            <img
-              style="width: 255%"
-              class="card-img-top"
-              src="{% static 'media/imoveis/default.png' %}"
-              alt="imagem de {{imovel.titulo}}"
-            />
-            {% endif %}
-            <div class="card-body">
-              <h4 class="card-title">{{imovel.titulo}}</h4>
-              <h6 style="margin-bottom: 10px" class="card-subtitle">
-                R$ {{ imovel.preco }}
-              </h6>
-              <a class="btn btn-dark" href="{% url 'imovel_detail' imovel_id=imovel.id imovel_nome=imovel.titulo|slugify %}">Detalhes</a>
-                <span>Publicado em {{imovel.data_geracao}}</span>
-            </div>
-          </div>
-        </article>
+  <header>
+    <div>
+        <img src="{% static 'img/carbono-icon.png'%}" alt="" width="50">
+        <form action="">
+            <input class="busca-texto" type="text" placeholder="Pesquisar...">
+        </form>
+    </div>
+    {% if user.is_authenticated %}
+      <a class="cabecalho-nav-link-usuario" href="{% url 'admin:index'%}">{{request.user}}</a>
+      <a class="cabecalho-nav-link-usuario" href="{% url 'graficos'%}">Ver Graficos</a>
+      <a class="cabecalho-nav-link-usuario" href="{% url 'logout'%}">Sair</a>
+    {% else %}
+      <a class="cabecalho-nav-link-usuario" href="{% url 'login'%}">Login</a>
+    {% endif %}
+  </header>
+  <main class="container-categoria">
+    <div class="categoria">
+        <h2>Tipos de imoveis</h2>
+        <section class="categoria-section">
+            <ul>
+              {% for tipoimovel in tipoimoveis%}
+                <li><a class="nav-categorias-link" href="">{{tipoimovel.nome}}</a></li>
+              {% endfor %}
+            </ul>
+        </section>
+    </div>
+    <h2 class="destaques-titulo">Destaques</h2>
+    <section class="container-destaques">
+      {% for imovel in imoveis %}
+        <div class="destaques-item">
+            <a class="item-link" href="">
+                {% if imovel.fotosdosimoveis_set.first.foto.url %}
+                  <img src="{{ imovel.fotosdosimoveis_set.first.foto.url }}" alt="imagem de {{imovel.titulo}}"/>
+                {% else %}
+                  <img  src="{% static 'media/imoveis/default.png' %}" alt="imagem de {{imovel.titulo}}"/>
+                {% endif %}
+                <h2><a class="btn btn-dark" href="{% url 'imovel_detail' imovel_id=imovel.id imovel_nome=imovel.titulo|slugify %}">{{imovel.titulo}}</a></h2>
+                <p class="item-valor">R$ {{ imovel.preco }}</p>
+                <p class="item-data">Publicado em {{imovel.data_geracao}}</p>
+                <div>
+                  <span class="span-categoria">{{imovel.tipo_imovel.nome}}</span>
+                </div>
+            </a>
+        </div>
         {% endfor %}
       </section>
-    </main>
-    <footer></footer>
+    <footer>
+      <div class="footer-redes">
+        <h3>Redes Sociais</h3>
+        <a href="">Instagram</a>
+        <a href="">Facebook</a>
+        <a href="">Whatsapp</a>
+      </div>
+    <div class="footer-redes">
+        <h3>Menu</h3>
+        <a href="">Quem Somos</a>
+        <a href="">Fale Conosco</a>
+        <a href="">Termos e Condições</a>
+    </div>
+    </footer>
   </div>
 </body>
 {%endblock%}
