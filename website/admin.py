@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Imovel,TipoImovel,FotosDosImoveis,RedesSociais
+from .models import Imovel,TipoImovel,FotosDosImoveis,RedesSociais,Textosdofooter
 
 # Register your models here.
 
@@ -17,6 +17,22 @@ class ImovelAdmin(admin.ModelAdmin):
     search_fields = ('titulo', 'descricao')
     inlines = [FotosDosImoveisInline]
 
+admin.site.register(Textosdofooter)
+class TextosFooterAdmin(admin.ModelAdmin):
+    fields = ('quem_somos', 'fale_conosco', 'termos_condicoes')
+    readonly_fields = ('quem_somos', 'fale_conosco', 'termos_condicoes')
+
+    def has_add_permission(self, request):
+        # Não permitir adicionar mais instâncias
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        # Permitir editar a única instância
+        return True
+
+    def has_delete_permission(self, request, obj=None):
+        # Não permitir excluir a única instância
+        return False
 
 admin.site.register(RedesSociais)
 class RedesSociaisAdmin(admin.ModelAdmin):

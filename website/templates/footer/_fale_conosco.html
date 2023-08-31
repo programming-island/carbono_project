@@ -1,0 +1,10 @@
+{% extends 'base.html' %} 
+{% block 'titulo' %}Quem Somos{% endblock %} 
+{% block 'conteudo' %} 
+    <div class="mensagem-fale-conosco" style="display: none; background-color: #d4ecf4; border-radius:12px;">
+        {% for mensagem in mensagems%}
+            <h1 style=" display: flex; justify-content: space-around; padding;12px; margin:12px;">Fale Conosco</h1>
+            <span style=" display: flex; justify-content: space-around; padding;15px; margin:12px;">{{ mensagem.fale_conosco }}</span>
+        {% endfor %}
+    </div>
+{% endblock %}

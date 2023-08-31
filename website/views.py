@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect,  get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login ,logout
-from .models import Imovel,TipoImovel,RedesSociais
+from .models import Imovel,TipoImovel,RedesSociais,Textosdofooter
 from django.http import JsonResponse
 
 
@@ -10,6 +10,7 @@ def home(request):
     imoveis = Imovel.objects.filter(destaque=True)
     redessociais = RedesSociais.objects.all()
     tipoimoveis = TipoImovel.objects.all()
+    mensagem = Textosdofooter.objects.all()
     
     search_query = request.GET.get('search')
     tipo_id = request.GET.get('tipo')
@@ -39,12 +40,25 @@ def home(request):
                'tipo_imovel_nome':tipo_imovel_nome,
                'tipo_imovel_psq':tipo_imovel_psq,
                'filtro_tipoimovel':filtro_tipoimovel,
-               'filtro_tituloimovel':filtro_tituloimovel}
+               'filtro_tituloimovel':filtro_tituloimovel,
+               'mensagems':mensagem,}
     
     if not imoveis:
         context['empty_message'] = "Nenhum imóvel encontrado para essa seleção."
         
     return render(request, 'home.html',context)
+
+def quem_somos(request):
+    mensagem = Textosdofooter.objects.all()
+    return render(request, '_quem_somos.html', {'mensagems': mensagem})
+
+def fale_conosco(request):
+    mensagem = Textosdofooter.objects.all()
+    return render(request, '_fale_conosco.html', {'mensagems': mensagem})
+
+def  termos_condicoes(request):
+    mensagem = Textosdofooter.objects.all()
+    return render(request, '_termos_condicoes.html', {'mensagems': mensagem})
 
 def imovel_pesquisa(request):
     return render(request, 'imoveis/pesquisa_imoveis.html')

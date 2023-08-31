@@ -85,3 +85,20 @@ class RedesSociais(models.Model):
     
     def __str__(self):
         return "Configurações de Redes Sociais"
+    
+class Textosdofooter(models.Model):
+    quem_somos = models.TextField(verbose_name="Texto 'Quem Somos'",help_text="Insira o texto para ser exibido ao clicar em 'Quem Somos.'")
+    fale_conosco = models.TextField(verbose_name="Texto 'Fale Conosco'",help_text="Insira o texto para ser exibido ao clicar em 'Fale Conosco.'")
+    termos_condicoes = models.TextField(verbose_name="Texto 'Termos e Condições'",help_text="Insira o texto para ser exibido ao clicar em 'termos e Condições.'")
+   
+    def save(self, *args, **kwargs):
+        if not self.pk and Textosdofooter.objects.exists():
+            return  # Apenas uma instância permitida
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Texto do roda-pé'
+        verbose_name_plural = 'Textos do roda-pé'
+        
+    def __str__(self):
+        return "Configurações de Textos do rada-pé" 
