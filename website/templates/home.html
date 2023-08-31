@@ -36,6 +36,7 @@
             </ul>
         </section>
     </div>
+  </main>
     {% if filtro_tituloimovel or filtro_tipoimovel %}
       {% if tipo_imovel_nome%}
         <h2 class=" destaques-titulo">Filtrando pelo tipo imóvel: {{ tipo_imovel_nome }}</h2>
@@ -67,10 +68,10 @@
       {% else%}
         <p style="color: red">Nenhum imóvel encontrado para essa seleção.</p>
       {% endif%}
-      </section>
       {% include 'footer/_quem_somos.html'  %}
       {% include 'footer/_fale_conosco.html'  %}
       {% include 'footer/_termos_condicoes.html' %}
+    </section>
     <footer>
       <div class="footer-redes">
         <h3>Redes Sociais</h3>
@@ -87,7 +88,6 @@
         <a href="{% url '_termos_condicoes'%}" class="link-mensagem-termos-condicoes">Termos e Condições</a>
     </div>
     </footer>
-  </div>
   <script>
     document.querySelectorAll('.link-mensagem-termos-condicoes').forEach(function(link) {
         link.addEventListener('click', function(event) {
