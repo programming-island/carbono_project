@@ -1,0 +1,4 @@
+Django>=4.2.4,<4.3
+django-chartjs>=2.3.0,<2.4
+Pillow>=10.0.0,<10.1
+psycopg2-binary<2.10,>=2.9.6

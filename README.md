@@ -1,2 +1,0 @@
-# carbono_project
- carbono
