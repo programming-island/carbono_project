@@ -50,7 +50,7 @@
       {% if imoveis%}
         {% for imovel in imoveis %}
           <div class="destaques-item">
-              <a class="item-link" href="">
+              <a class="item-link" href="{% url 'imovel_detail' imovel_id=imovel.id imovel_nome=imovel.titulo|slugify %}">
                   {% if imovel.fotosdosimoveis_set.first.foto.url %}
                     <img src="{{ imovel.fotosdosimoveis_set.first.foto.url }}" alt="imagem de {{imovel.titulo}}"/>
                   {% else %}
